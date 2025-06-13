@@ -11,11 +11,11 @@ class EmailSenderBad:
 class OrderBad:
     def create(self):
         # Perform order creation logic
-        email = EmailSender()
+        email = EmailSenderBad()
         email.send("Order created successfully.")
         # This is an example of high coupling because the Order class is directly dependent on the EmailSender class.
         # If we want to change the way emails are sent, we have to modify the Order class as well.
-# order = Order()
+# order = OrderBad()
 # order.create()  # Output: Sending email: Order created successfully.
 
 # Low Coupling Example. Add an abstraction layer to decouple the classes.
