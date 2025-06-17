@@ -17,3 +17,43 @@ class Car:
 
 car = Car()
 car.start()
+
+# The high level class in the example above (Car) is tightly coupled with the low level class (Engine). If we want to change the Engine class, 
+# we have to change the Car class as well.
+
+# Refactored Solution
+from abc import ABC, abstractmethod
+class EngineInterface(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+    
+class BasicEngine(EngineInterface):
+    def start(self):
+        print("Basic Engine started")
+
+class ElectricEngine(EngineInterface):
+    def start(self):
+        print("Electric Engine started")
+        
+class DieselEngine(EngineInterface):
+    def start(self):
+        print("Diesel Engine started")
+
+class Car:
+    def __init__(self, engine: EngineInterface):
+        self.engine = engine
+        
+    def start(self):
+        self.engine.start()
+        print("Car started")
+        
+# Dependency Injection
+car_with_basic_engine = Car(BasicEngine())
+car_with_basic_engine.start()
+car_with_electric_engine = Car(ElectricEngine())
+car_with_electric_engine.start()
+car_with_diesel_engine = Car(DieselEngine())
+car_with_diesel_engine.start()
+# This design adheres to the Dependency Inversion Principle (DIP) because the high-level module (Car) depends on the abstraction 
+# (EngineInterface),
