@@ -56,4 +56,14 @@ car_with_electric_engine.start()
 car_with_diesel_engine = Car(DieselEngine())
 car_with_diesel_engine.start()
 # This design adheres to the Dependency Inversion Principle (DIP) because the high-level module (Car) depends on the abstraction 
-# (EngineInterface),
+# (EngineInterface)
+
+# Dependency Injection offers several benefits:
+
+# Decoupling
+# Testability: By injecting dependencies, you can easily swap out implementations for testing purposes.
+# Flexibility: You can change the behavior of a class without modifying its code by injecting different dependencies.
+# Maintainability: You can easily manage dependencies and their configurations in one place, making the codebase cleaner and easier to maintain.
+# Scalability: You can easily add new features or change existing ones without affecting the entire codebase, as long as you adhere to the abstractions defined by 
+# interfaces.
+# Reusability: You can reuse the same class with different dependencies, making it more versatile.

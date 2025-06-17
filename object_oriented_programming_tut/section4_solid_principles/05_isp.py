@@ -84,6 +84,14 @@ class Sphere3D(Shape3D):
         return 4 * 3.14 * self.radius ** 2
     def volume(self) -> float:
         return (4/3) * 3.14 * self.radius ** 3
+class Triangualr_Pyramid(Shape3D):
+    def __init__(self, base_area: float = 0.0, height: float = 0.0):
+        self.base_area = base_area
+        self.height = height
+    def area(self) -> float:
+        return self.base_area + (3 * (self.base_area ** 0.5))  # Simplified for example
+    def volume(self) -> float:
+        return (1/3) * self.base_area * self.height
     
     
 # Example usage
@@ -92,5 +100,9 @@ print("Circle2D Area:", circle2d.area())
 sphere3d = Sphere3D(5)
 print("Sphere3D Area:", sphere3d.area())
 print("Sphere3D Volume:", sphere3d.volume())
+# Triangular Pyramid Example
+triangular_pyramid = Triangualr_Pyramid(base_area=10, height=5)
+print("Triangular Pyramid Area:", triangular_pyramid.area())
+print("Triangular Pyramid Volume:", triangular_pyramid.volume())
 
 # This design adheres to ISP by separating 2D and 3D shapes into different interfaces.
